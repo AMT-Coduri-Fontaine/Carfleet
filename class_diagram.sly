@@ -46,11 +46,13 @@
         </multiplicity>
       </role>
     </association>
-    <entity entityType="CLASS" id="42762" isAbstract="false" name="Fleet" visibility="PUBLIC"/>
+    <entity entityType="CLASS" id="42762" isAbstract="false" name="Fleet" visibility="PUBLIC">
+      <attribute const="false" defaultValue="" isStatic="false" name="id" type="String" visibility="PRIVATE"/>
+    </entity>
     <association aggregation="NONE" direction="FIRST_TO_SECOND" id="42731" name="is owned">
       <role componentId="42729" name="" visibility="PRIVATE">
         <multiplicity>
-          <min>2147483647</min>
+          <min>1</min>
           <max>2147483647</max>
         </multiplicity>
       </role>
@@ -76,7 +78,7 @@
     <relationView color="-12566464" relationId="42731">
       <line>
         <point>
-          <x>761</x>
+          <x>751</x>
           <y>201</y>
         </point>
         <point>
@@ -85,13 +87,13 @@
         </point>
       </line>
       <labelAssociation>
-        <x>808</x>
+        <x>803</x>
         <y>210</y>
         <w>56</w>
         <h>16</h>
       </labelAssociation>
       <roleAssociation>
-        <x>765</x>
+        <x>755</x>
         <y>205</y>
         <w>0</w>
         <h>16</h>
@@ -103,9 +105,9 @@
         <h>16</h>
       </roleAssociation>
       <multipliciteAssociation>
-        <x>765</x>
+        <x>755</x>
         <y>179</y>
-        <w>7</w>
+        <w>22</w>
         <h>16</h>
       </multipliciteAssociation>
       <multipliciteAssociation>
@@ -118,7 +120,7 @@
     <relationView color="-12566464" relationId="42776">
       <line>
         <point>
-          <x>411</x>
+          <x>321</x>
           <y>191</y>
         </point>
         <point>
@@ -127,13 +129,13 @@
         </point>
       </line>
       <labelAssociation>
-        <x>431</x>
+        <x>386</x>
         <y>200</y>
         <w>79</w>
         <h>16</h>
       </labelAssociation>
       <roleAssociation>
-        <x>415</x>
+        <x>325</x>
         <y>195</y>
         <w>0</w>
         <h>16</h>
@@ -145,7 +147,7 @@
         <h>16</h>
       </roleAssociation>
       <multipliciteAssociation>
-        <x>415</x>
+        <x>325</x>
         <y>169</y>
         <w>23</w>
         <h>16</h>
@@ -160,41 +162,41 @@
     <relationView color="-12566464" relationId="43113">
       <line>
         <point>
-          <x>451</x>
+          <x>441</x>
           <y>451</y>
         </point>
         <point>
-          <x>331</x>
-          <y>216</y>
+          <x>301</x>
+          <y>231</y>
         </point>
       </line>
       <labelAssociation>
-        <x>395</x>
-        <y>338</y>
+        <x>375</x>
+        <y>345</y>
         <w>0</w>
         <h>16</h>
       </labelAssociation>
       <roleAssociation>
-        <x>455</x>
+        <x>445</x>
         <y>429</y>
         <w>0</w>
         <h>16</h>
       </roleAssociation>
       <roleAssociation>
-        <x>335</x>
-        <y>220</y>
+        <x>305</x>
+        <y>235</y>
         <w>0</w>
         <h>16</h>
       </roleAssociation>
       <multipliciteAssociation>
-        <x>432</x>
+        <x>422</x>
         <y>431</y>
         <w>8</w>
         <h>16</h>
       </multipliciteAssociation>
       <multipliciteAssociation>
-        <x>317</x>
-        <y>220</y>
+        <x>287</x>
+        <y>235</y>
         <w>7</w>
         <h>16</h>
       </multipliciteAssociation>
@@ -245,7 +247,7 @@
       <geometry>
         <x>520</x>
         <y>160</y>
-        <w>240</w>
+        <w>230</w>
         <h>100</h>
       </geometry>
     </componentView>
@@ -259,10 +261,10 @@
     </componentView>
     <componentView color="-2079" componentID="42762" displayAttributes="true" displayDefault="true" displayMethods="true">
       <geometry>
-        <x>260</x>
+        <x>220</x>
         <y>160</y>
-        <w>150</w>
-        <h>55</h>
+        <w>100</w>
+        <h>70</h>
       </geometry>
     </componentView>
     <componentView color="-2079" componentID="43079" displayAttributes="true" displayDefault="true" displayMethods="true">
