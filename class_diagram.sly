@@ -1,0 +1,295 @@
+<?xml version="1.0" encoding="iso-8859-15" standalone="no"?>
+<classDiagram>
+  <diagramElements defaultViewEntities="ALL" defaultViewEnum="true" defaultViewMethods="TYPE_AND_NAME" defaultVisibleTypes="true" informations="" name="">
+    <association aggregation="NONE" direction="FIRST_TO_SECOND" id="43124" name="">
+      <role componentId="43079" name="" visibility="PRIVATE">
+        <multiplicity>
+          <min>1</min>
+          <max>1</max>
+        </multiplicity>
+      </role>
+      <role componentId="42729" name="" visibility="PRIVATE">
+        <multiplicity>
+          <min>2147483647</min>
+          <max>2147483647</max>
+        </multiplicity>
+      </role>
+    </association>
+    <association aggregation="NONE" direction="FIRST_TO_SECOND" id="43113" name="">
+      <role componentId="43079" name="" visibility="PRIVATE">
+        <multiplicity>
+          <min>1</min>
+          <max>1</max>
+        </multiplicity>
+      </role>
+      <role componentId="42762" name="" visibility="PRIVATE">
+        <multiplicity>
+          <min>2147483647</min>
+          <max>2147483647</max>
+        </multiplicity>
+      </role>
+    </association>
+    <entity entityType="CLASS" id="43079" isAbstract="false" name="User" visibility="PUBLIC">
+      <attribute const="false" defaultValue="" isStatic="false" name="id" type="String" visibility="PRIVATE"/>
+    </entity>
+    <association aggregation="AGGREGATE" direction="FIRST_TO_SECOND" id="42776" name="is composed">
+      <role componentId="42762" name="" visibility="PRIVATE">
+        <multiplicity>
+          <min>0</min>
+          <max>1</max>
+        </multiplicity>
+      </role>
+      <role componentId="42729" name="" visibility="PRIVATE">
+        <multiplicity>
+          <min>2147483647</min>
+          <max>2147483647</max>
+        </multiplicity>
+      </role>
+    </association>
+    <entity entityType="CLASS" id="42762" isAbstract="false" name="Fleet" visibility="PUBLIC"/>
+    <association aggregation="NONE" direction="FIRST_TO_SECOND" id="42731" name="is owned">
+      <role componentId="42729" name="" visibility="PRIVATE">
+        <multiplicity>
+          <min>2147483647</min>
+          <max>2147483647</max>
+        </multiplicity>
+      </role>
+      <role componentId="42730" name="" visibility="PRIVATE">
+        <multiplicity>
+          <min>1</min>
+          <max>1</max>
+        </multiplicity>
+      </role>
+    </association>
+    <entity entityType="CLASS" id="42730" isAbstract="false" name="Driver" visibility="PUBLIC">
+      <attribute const="false" defaultValue="" isStatic="false" name="id" type="String" visibility="PRIVATE"/>
+      <attribute const="false" defaultValue="" isStatic="false" name="name" type="String" visibility="PRIVATE"/>
+      <attribute const="false" defaultValue="" isStatic="false" name="attributes" type="List&lt;Map&lt;String,String&gt;&gt;" visibility="PRIVATE"/>
+    </entity>
+    <entity entityType="CLASS" id="42729" isAbstract="false" name="Car" visibility="PUBLIC">
+      <attribute const="false" defaultValue="" isStatic="false" name="id" type="String" visibility="PRIVATE"/>
+      <attribute const="false" defaultValue="" isStatic="false" name="name" type="String" visibility="PRIVATE"/>
+      <attribute const="false" defaultValue="" isStatic="false" name="attributes" type="List&lt;Map&lt;String,String&gt;&gt;" visibility="PRIVATE"/>
+    </entity>
+  </diagramElements>
+  <umlView grid="10" name="Main view" open="true">
+    <relationView color="-12566464" relationId="42731">
+      <line>
+        <point>
+          <x>761</x>
+          <y>201</y>
+        </point>
+        <point>
+          <x>911</x>
+          <y>201</y>
+        </point>
+      </line>
+      <labelAssociation>
+        <x>808</x>
+        <y>210</y>
+        <w>56</w>
+        <h>16</h>
+      </labelAssociation>
+      <roleAssociation>
+        <x>765</x>
+        <y>205</y>
+        <w>0</w>
+        <h>16</h>
+      </roleAssociation>
+      <roleAssociation>
+        <x>875</x>
+        <y>205</y>
+        <w>0</w>
+        <h>16</h>
+      </roleAssociation>
+      <multipliciteAssociation>
+        <x>765</x>
+        <y>179</y>
+        <w>7</w>
+        <h>16</h>
+      </multipliciteAssociation>
+      <multipliciteAssociation>
+        <x>897</x>
+        <y>179</y>
+        <w>8</w>
+        <h>16</h>
+      </multipliciteAssociation>
+    </relationView>
+    <relationView color="-12566464" relationId="42776">
+      <line>
+        <point>
+          <x>411</x>
+          <y>191</y>
+        </point>
+        <point>
+          <x>521</x>
+          <y>191</y>
+        </point>
+      </line>
+      <labelAssociation>
+        <x>431</x>
+        <y>200</y>
+        <w>79</w>
+        <h>16</h>
+      </labelAssociation>
+      <roleAssociation>
+        <x>415</x>
+        <y>195</y>
+        <w>0</w>
+        <h>16</h>
+      </roleAssociation>
+      <roleAssociation>
+        <x>485</x>
+        <y>195</y>
+        <w>0</w>
+        <h>16</h>
+      </roleAssociation>
+      <multipliciteAssociation>
+        <x>415</x>
+        <y>169</y>
+        <w>23</w>
+        <h>16</h>
+      </multipliciteAssociation>
+      <multipliciteAssociation>
+        <x>507</x>
+        <y>169</y>
+        <w>7</w>
+        <h>16</h>
+      </multipliciteAssociation>
+    </relationView>
+    <relationView color="-12566464" relationId="43113">
+      <line>
+        <point>
+          <x>451</x>
+          <y>451</y>
+        </point>
+        <point>
+          <x>331</x>
+          <y>216</y>
+        </point>
+      </line>
+      <labelAssociation>
+        <x>395</x>
+        <y>338</y>
+        <w>0</w>
+        <h>16</h>
+      </labelAssociation>
+      <roleAssociation>
+        <x>455</x>
+        <y>429</y>
+        <w>0</w>
+        <h>16</h>
+      </roleAssociation>
+      <roleAssociation>
+        <x>335</x>
+        <y>220</y>
+        <w>0</w>
+        <h>16</h>
+      </roleAssociation>
+      <multipliciteAssociation>
+        <x>432</x>
+        <y>431</y>
+        <w>8</w>
+        <h>16</h>
+      </multipliciteAssociation>
+      <multipliciteAssociation>
+        <x>317</x>
+        <y>220</y>
+        <w>7</w>
+        <h>16</h>
+      </multipliciteAssociation>
+    </relationView>
+    <relationView color="-12566464" relationId="43124">
+      <line>
+        <point>
+          <x>481</x>
+          <y>451</y>
+        </point>
+        <point>
+          <x>591</x>
+          <y>261</y>
+        </point>
+      </line>
+      <labelAssociation>
+        <x>540</x>
+        <y>360</y>
+        <w>0</w>
+        <h>16</h>
+      </labelAssociation>
+      <roleAssociation>
+        <x>485</x>
+        <y>429</y>
+        <w>0</w>
+        <h>16</h>
+      </roleAssociation>
+      <roleAssociation>
+        <x>595</x>
+        <y>265</y>
+        <w>0</w>
+        <h>16</h>
+      </roleAssociation>
+      <multipliciteAssociation>
+        <x>467</x>
+        <y>429</y>
+        <w>8</w>
+        <h>16</h>
+      </multipliciteAssociation>
+      <multipliciteAssociation>
+        <x>559</x>
+        <y>264</y>
+        <w>7</w>
+        <h>16</h>
+      </multipliciteAssociation>
+    </relationView>
+    <componentView color="-2079" componentID="42729" displayAttributes="true" displayDefault="true" displayMethods="true">
+      <geometry>
+        <x>520</x>
+        <y>160</y>
+        <w>240</w>
+        <h>100</h>
+      </geometry>
+    </componentView>
+    <componentView color="-2079" componentID="42730" displayAttributes="true" displayDefault="true" displayMethods="true">
+      <geometry>
+        <x>910</x>
+        <y>160</y>
+        <w>230</w>
+        <h>100</h>
+      </geometry>
+    </componentView>
+    <componentView color="-2079" componentID="42762" displayAttributes="true" displayDefault="true" displayMethods="true">
+      <geometry>
+        <x>260</x>
+        <y>160</y>
+        <w>150</w>
+        <h>55</h>
+      </geometry>
+    </componentView>
+    <componentView color="-2079" componentID="43079" displayAttributes="true" displayDefault="true" displayMethods="true">
+      <geometry>
+        <x>360</x>
+        <y>450</y>
+        <w>150</w>
+        <h>70</h>
+      </geometry>
+    </componentView>
+    <note color="-2079" content="Driver est une classe interne de Car">
+      <noteGeometry>
+        <x>1240</x>
+        <y>200</y>
+        <w>100</w>
+        <h>60</h>
+      </noteGeometry>
+      <noteLine color="-12566464" relationId="42730">
+        <point>
+          <x>1241</x>
+          <y>241</y>
+        </point>
+        <point>
+          <x>1141</x>
+          <y>241</y>
+        </point>
+      </noteLine>
+    </note>
+  </umlView>
+</classDiagram>
