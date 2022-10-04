@@ -19,7 +19,7 @@ class MockApiTest {
 
     @Test
     void generateDriverJson() {
-        final String result = mockApi.generateDriverJson("id", "name", "");
+        final String result = mockApi.generateDriverJson("id", "name", "").replaceAll("\\s+","");
         final String expected = """
                 {
                   "id": "id",
@@ -27,27 +27,41 @@ class MockApiTest {
                   "column_values": [
                   ]
                 }
-                """;
+                """.replaceAll("\\s+","");
 
-        assertTrue(expected.trim().contains(result.trim()));
+        assertEquals(expected, result);
+    }
+
+    void generateDriverJsonWithColumnValues() {
+        final String result = mockApi.generateDriverJson("id", "name", "").replaceAll("\\s+","");
+        final String expected = """
+                {
+                  "id": "id",
+                  "name": "name",
+                  "column_values": [
+                  ]
+                }
+                """.replaceAll("\\s+","");
+
+        assertEquals(expected, result);
     }
 
     @Test
     void generateColumnValue() {
-        final String result = mockApi.generateColumnValue("title", "text");
+        final String result = mockApi.generateColumnValue("title", "text").replaceAll("\\s+","");
         final String expected = """
                 {
                   "title": "title",
                   "text": "text"
                 }
-                """;
+                """.replaceAll("\\s+","");
 
-        assertTrue(expected.trim().contains(result.trim()));
+        assertEquals(expected, result);
     }
 
     @Test
     void generateCarJson() {
-        final String result = mockApi.generateCarJson("id", "name", "");
+        final String result = mockApi.generateCarJson("id", "name", "").replaceAll("\\s+","");
         final String expected = """
                 {
                   "id": "id",
@@ -55,8 +69,23 @@ class MockApiTest {
                   "column_values": [
                   ]
                 }
-                """;
+                """.replaceAll("\\s+","");
 
-        assertTrue(expected.trim().contains(result.trim()));
+        assertEquals(expected, result);
+    }
+
+    @Test
+    void generateCarJsonWithColumnValues() {
+        final String result = mockApi.generateCarJson("id", "name", "").replaceAll("\\s+","");
+        final String expected = """
+                {
+                  "id": "id",
+                  "name": "name",
+                  "column_values": [
+                  ]
+                }
+                """.replaceAll("\\s+","");
+
+        assertEquals(expected, result);
     }
 }
