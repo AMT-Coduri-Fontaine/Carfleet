@@ -90,4 +90,20 @@ class CarTest {
 
         assertEquals("name", car.getName());
     }
+
+    @Test
+    void carDriver_SetDriver_Success() {
+        final Car car = new Car("id", "name");
+        final Driver driver = new Driver("id2", "name2");
+        car.setDriver(driver);
+
+        assertEquals(driver, car.getDriver());
+    }
+
+    @Test
+    void carDriver_SetNull_ThrowsException() {
+        final Car car = new Car("id", "name");
+
+        assertThrows(IllegalArgumentException.class, () -> car.setDriver(null));
+    }
 }
