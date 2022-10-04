@@ -102,7 +102,7 @@ public class MockApi extends DataProvider {
     private static String generateRandomString(){
         int leftLimit = 48; // numeral '0'
         int rightLimit = 122; // letter 'z'
-        int targetStringLength = 10;
+        int targetStringLength = random.nextInt(0,16);
 
 
         return  random.ints(leftLimit, rightLimit + 1)
