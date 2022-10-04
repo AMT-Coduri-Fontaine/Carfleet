@@ -4,6 +4,9 @@ import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 class DriverTest {
@@ -18,9 +21,10 @@ class DriverTest {
 
     @Test
     void createDriver(){
-        final Driver driver = new Driver("id", "name");
+        final Driver driver = new Driver("id", "name", new HashMap<String, String>());
 
-        assertTrue(driver.getId().equals("id"));
-        assertTrue(driver.getName().equals("name"));
+        assertEquals("id", driver.getId());
+        assertEquals("name", driver.getName());
+        assertEquals( 0, driver.getAttributes().size());
     }
 }
