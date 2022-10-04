@@ -5,7 +5,14 @@ import amt.models.Driver;
 
 import java.util.List;
 
-public interface DataProvider {
-    List<Driver> getDrivers();
-    List<Car> getCars();
+public abstract class DataProvider {
+    List<Driver> getDrivers(){
+        return null;
+    }
+    List<Car> getCars(){
+        return null;
+    }
+
+    protected abstract String fetchDrivers();
+    protected abstract String fetchCars();
 }

@@ -78,4 +78,15 @@ class MockApiTest {
     }
 
 
+    @Test
+    void fetchDrivers() {
+        // TODO check if valide json.
+        assertNotNull(mockApi.fetchDrivers());
+    }
+
+    @Test
+    void fetchCars() {
+        // TODO check if valid json.
+        assertNotNull(mockApi.fetchCars());
+    }
 }

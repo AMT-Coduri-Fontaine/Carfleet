@@ -1,17 +1,15 @@
 package API;
 
-import amt.models.Car;
 import amt.models.Driver;
 
-import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.List;
+
 import java.util.stream.Collectors;
 
 /**
  * Cette class permet de récupérer des fausses données pour pouvoir faire des tests.
  */
-public class MockApi implements DataProvider {
+public class MockApi extends DataProvider {
     private final MockData[] datas;
     public MockApi(MockData[] data){
         this.datas = data;
@@ -86,12 +84,12 @@ public class MockApi implements DataProvider {
     }
 
     @Override
-    public List<Driver> getDrivers() {
-        return null;
+    protected String fetchDrivers() {
+        return "[" + Arrays.stream(datas).map(MockData::toJson).collect(Collectors.joining(",")) + "]";
     }
 
     @Override
-    public List<Car> getCars() {
-        return null;
+    protected String fetchCars() {
+        return "[" + Arrays.stream(datas).map(MockData::toJson).collect(Collectors.joining(",")) + "]";
     }
 }
