@@ -68,4 +68,26 @@ class CarTest {
 
         assertEquals(1, car.getAttributes().size());
     }
+
+    @Test
+    void carAttributes_GetEmptyAttributes_ReturnsEmptyList_Success() {
+        final Car car = new Car("id", "name");
+
+        assertEquals(new ArrayList<Attribute>(), car.getAttributes());
+        assertEquals(0, car.getAttributes().size());
+    }
+
+    @Test
+    void carId_GetId_Success() {
+        final Car car = new Car("id", "name");
+
+        assertEquals("id", car.getId());
+    }
+
+    @Test
+    void carName_GetName_Success() {
+        final Car car = new Car("id", "name");
+
+        assertEquals("name", car.getName());
+    }
 }
