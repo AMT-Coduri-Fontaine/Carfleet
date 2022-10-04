@@ -1,10 +1,15 @@
 package amt.models;
+import javafx.util.Pair;
 
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import utils.Attribute;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.LinkedList;
+import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -19,11 +24,33 @@ class CarTest {
     }
 
     @Test
-    void createCar(){
-        final Car car = new Car("id", "name", new HashMap<>());
+    void carCreation_WithoutAttributes_Success() {
+        final Car car = new Car("id", "name");
+
 
         assertEquals("id", car.getId());
         assertEquals("name", car.getName());
         assertEquals(0, car.getAttributes().size());
+    }
+
+    @Test
+    void carCreation_WithAttributes_Success() {
+        final ArrayList<Attribute> attributes = new ArrayList<>();
+        attributes.add(new Attribute("attr1", "val1"));
+        final Car car = new Car("id", "name", attributes);
+
+        assertEquals("id", car.getId());
+        assertEquals("name", car.getName());
+        assertEquals(1, car.getAttributes().size());
+    }
+
+    @Test
+    void attributesLocalModification_DoesntAffectCarAttributes_Success() {
+        final ArrayList<Attribute> attributes = new ArrayList<>();
+        attributes.add(new Attribute("attr1", "val1"));
+        final Car car = new Car("id", "name", attributes);
+        attributes.remove(0);
+
+        assertEquals(1, car.getAttributes().size());
     }
 }
