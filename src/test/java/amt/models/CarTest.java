@@ -53,4 +53,24 @@ class CarTest {
 
         assertEquals(1, car.getAttributes().size());
     }
+
+    @Test
+    void carAttributes_GetAttributes_Success() {
+        final ArrayList<Attribute> attributes = new ArrayList<>();
+        attributes.add(new Attribute("attr1", "val1"));
+        final Car car = new Car("id", "name", attributes);
+
+        assertEquals(attributes, car.getAttributes());
+    }
+
+    @Test
+    void carAttributes_GetAttributesModification_DoesntAffectCarAttributes_Success() {
+        final ArrayList<Attribute> attributes = new ArrayList<>();
+        Attribute attr1 = new Attribute("attr1", "val1");
+        attributes.add(attr1);
+        final Car car = new Car("id", "name", attributes);
+        car.getAttributes().remove(attr1);
+
+        assertEquals(10, car.getAttributes().size());
+    }
 }
