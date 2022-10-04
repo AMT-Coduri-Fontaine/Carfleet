@@ -1,6 +1,7 @@
 package amt.models;
 
-import java.util.Map;
+import java.util.LinkedList;
+import java.util.List;
 
 public class Driver {
     public String getId() {
@@ -11,17 +12,23 @@ public class Driver {
         return name;
     }
 
-    public Map<String, String> getAttributes() {
-        return attributes;
+    public List<Attribute> getAttributes() {
+        return new LinkedList<>(attributes);
     }
 
     private final String id;
     private final String name;
-    private final Map<String, String> attributes;
+    private final List<Attribute> attributes = new LinkedList<>();
 
-    public Driver(String id, String name, Map<String, String> attributes){
+    public Driver(String id, String name, List<Attribute> attributes) {
         this.id = id;
         this.name = name;
-        this.attributes = attributes;
+        if (attributes != null)
+            this.attributes.addAll(attributes);
+    }
+
+    public Driver(String id, String name) {
+        this.id = id;
+        this.name = name;
     }
 }
