@@ -1,5 +1,7 @@
 package API;
 
+import com.fasterxml.jackson.core.JacksonException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
@@ -10,6 +12,7 @@ import java.util.List;
 import static org.junit.jupiter.api.Assertions.*;
 
 class MockApiTest {
+    ObjectMapper mapper = new ObjectMapper();
     static MockApi mockApi;
 
     MockApiTest(){
@@ -86,9 +89,8 @@ class MockApiTest {
         for(int i = 0; i < 10; i++){
             String json = new MockApi(1).fetchDrivers();
             assertNotNull(json);
-            // TODO check if valide json.
-            boolean isValideJson = false;
-            assertTrue(isValideJson);
+            boolean isValidJson = isValid(json);
+            assertTrue(isValidJson);
         }
     }
 
@@ -97,9 +99,19 @@ class MockApiTest {
         for(int i = 0; i < 10; i++){
             String json = new MockApi(1).fetchCars();
             assertNotNull(json);
-            // TODO check if valide json.
-            boolean isValideJson = false;
-            assertTrue(isValideJson);
+            boolean isValidJson = isValid(json);
+            assertTrue(isValidJson);
         }
+    }
+
+
+
+    public boolean isValid(String json) {
+        try {
+            mapper.readTree(json);
+        } catch (JacksonException e) {
+            return false;
+        }
+        return true;
     }
 }
