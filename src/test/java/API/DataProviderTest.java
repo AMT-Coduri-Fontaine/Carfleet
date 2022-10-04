@@ -12,7 +12,12 @@ import java.util.List;
 import static org.junit.jupiter.api.Assertions.*;
 
 class DataProviderTest {
-    DataProvider api = new MockApi();
+    final DataProvider api;
+
+    DataProviderTest(){
+        MockApi.MockData[] datas = {};
+        api = new MockApi(datas);
+    }
 
     @BeforeEach
     void setUp() {
