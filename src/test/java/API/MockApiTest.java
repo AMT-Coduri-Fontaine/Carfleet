@@ -32,13 +32,26 @@ class MockApiTest {
         assertEquals(expected, result);
     }
 
+    @Test
     void generateDriverJsonWithColumnValues() {
-        final String result = mockApi.generateDriverJson("id", "name", "").replaceAll("\\s+","");
+        final String[] columnValues = {
+                mockApi.generateColumnValue("title", "text"),
+                mockApi.generateColumnValue("title1", "text1"),
+        };
+        final String result = mockApi.generateDriverJson("id", "name", String.join(",", columnValues)).replaceAll("\\s+","");
         final String expected = """
                 {
                   "id": "id",
                   "name": "name",
                   "column_values": [
+                   {
+                     "title": "title",
+                     "text": "text"
+                   },
+                   {
+                     "title": "title1",
+                     "text": "text1"
+                   }
                   ]
                 }
                 """.replaceAll("\\s+","");
