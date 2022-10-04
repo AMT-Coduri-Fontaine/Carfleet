@@ -37,7 +37,14 @@ class DataProviderTest {
 
     @Test
     void getCars() {
-        final List<Car> result = new LinkedList<>();
-        assertEquals(result, api.getCars());
+        final List<Car> result = api.getCars();
+
+        assertNotEquals(0, result.size());
+
+        for (final Car car : result) {
+            assertNotNull(car.getId());
+            assertNotNull(car.getName());
+            assertNotNull(car.getAttributes());
+        }
     }
 }
