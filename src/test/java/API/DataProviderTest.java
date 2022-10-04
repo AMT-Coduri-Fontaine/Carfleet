@@ -15,7 +15,7 @@ class DataProviderTest {
     final DataProvider api;
 
     DataProviderTest(){
-        api = new MockApi(MockApi.generateRandomData());
+        api = new MockApi(10);
     }
 
     @BeforeEach

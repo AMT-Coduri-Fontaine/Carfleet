@@ -11,22 +11,24 @@ import java.util.stream.Collectors;
  */
 public class MockApi extends DataProvider {
     private static final Random random = new Random();
-    private final MockData[] datas;
-    public MockApi(MockData[] data){
-        this.datas = data;
+    private final MockEntry[] drivers;
+    private final MockEntry[] cars;
+    public MockApi(int numberOfCars){
+        this.cars = MockApi.generateRandomData(numberOfCars, 3);
+        this.drivers = MockApi.generateRandomData(numberOfCars, 3);
     }
-    public record MockData(String id, String name, ColumnValue[] columnValues) {
+    public record MockEntry(String id, String name, ColumnValue[] columnValues) {
         @Override
         public boolean equals(Object o) {
             if (this == o) return true;
             if (o == null || getClass() != o.getClass()) return false;
 
-            MockData mockData = (MockData) o;
+            MockEntry mockEntry = (MockEntry) o;
 
-            if (!id.equals(mockData.id)) return false;
-            if (!name.equals(mockData.name)) return false;
+            if (!id.equals(mockEntry.id)) return false;
+            if (!name.equals(mockEntry.name)) return false;
             // Probably incorrect - comparing Object[] arrays with Arrays.equals
-            return Arrays.equals(columnValues, mockData.columnValues);
+            return Arrays.equals(columnValues, mockEntry.columnValues);
         }
 
         @Override
@@ -84,14 +86,14 @@ public class MockApi extends DataProvider {
         return columnValue.formatted(title, text);
     }
 
-    static MockData[] generateRandomData(){
-        MockApi.MockData[] datas = new MockApi.MockData[random.nextInt(0,21)];
+    static MockEntry[] generateRandomData(int numberOfEntry, int numberOfColumnValue){
+        MockEntry[] datas = new MockEntry[numberOfEntry];
         for(int i = 0; i < datas.length; i++){
-            MockApi.ColumnValue[] columnValues = new MockApi.ColumnValue[random.nextInt(0,21)];
+            MockApi.ColumnValue[] columnValues = new MockApi.ColumnValue[numberOfColumnValue];
             for(int j = 0; j < columnValues.length; j++){
                 columnValues[j] = new MockApi.ColumnValue(generateRandomString(), generateRandomString());
             }
-            datas[i] = new MockApi.MockData(generateRandomString(), generateRandomString(), columnValues);
+            datas[i] = new MockEntry(generateRandomString(), generateRandomString(), columnValues);
         }
         return datas;
     }
@@ -114,11 +116,29 @@ public class MockApi extends DataProvider {
 
     @Override
     protected String fetchDrivers() {
-        return "[" + Arrays.stream(datas).map(MockData::toJson).collect(Collectors.joining(",")) + "]";
+        final String driversJson = """
+                {
+                  "id": "%s",
+                  "name": "%s",
+                  "subitems": [
+                    %s
+                  ]
+                }
+                """;
+
+        final String[] driversJsons = Arrays.stream(drivers).map(MockEntry::toJson).toArray(String[]::new);
+        final String[] result = new String[driversJsons.length];
+
+        for (int i = 0; i < cars.length; i++) {
+            final MockEntry car = cars[i];
+            result[i] = driversJson.formatted(car.id, car.name, driversJsons[i]);
+        }
+
+        return "[" + String.join(",", result) + "]";
     }
 
     @Override
     protected String fetchCars() {
-        return "[" + Arrays.stream(datas).map(MockData::toJson).collect(Collectors.joining(",")) + "]";
+        return "[" + Arrays.stream(cars).map(MockEntry::toJson).collect(Collectors.joining(",")) + "]";
     }
 }

@@ -1,6 +1,7 @@
 package API;
 
 import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -9,14 +10,15 @@ import java.util.List;
 import static org.junit.jupiter.api.Assertions.*;
 
 class MockApiTest {
-    final MockApi mockApi;
+    static MockApi mockApi;
 
     MockApiTest(){
-        mockApi = new MockApi(MockApi.generateRandomData());
+
     }
 
-    @BeforeEach
-    void setUp() {
+    @BeforeAll
+    static void setUp() {
+        mockApi = new MockApi(1);
     }
 
     @AfterEach
@@ -82,16 +84,22 @@ class MockApiTest {
     @Test
     void fetchDrivers() {
         for(int i = 0; i < 10; i++){
-            assertNotNull(mockApi.fetchDrivers());
+            String json = new MockApi(1).fetchDrivers();
+            assertNotNull(json);
             // TODO check if valide json.
+            boolean isValideJson = false;
+            assertTrue(isValideJson);
         }
     }
 
     @Test
     void fetchCars() {
         for(int i = 0; i < 10; i++){
-            assertNotNull(mockApi.fetchCars());
+            String json = new MockApi(1).fetchCars();
+            assertNotNull(json);
             // TODO check if valide json.
+            boolean isValideJson = false;
+            assertTrue(isValideJson);
         }
     }
 }
