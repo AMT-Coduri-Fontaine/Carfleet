@@ -1,15 +1,10 @@
 package amt.models;
-import javafx.util.Pair;
 
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import utils.Attribute;
 
 import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.LinkedList;
-import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -71,6 +66,6 @@ class CarTest {
         final Car car = new Car("id", "name", attributes);
         car.getAttributes().remove(attr1);
 
-        assertEquals(10, car.getAttributes().size());
+        assertEquals(1, car.getAttributes().size());
     }
 }

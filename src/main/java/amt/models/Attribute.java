@@ -1,4 +1,4 @@
-package utils;
+package amt.models;
 
 public class Attribute {
     private String key;
