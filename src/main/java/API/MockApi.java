@@ -1,15 +1,16 @@
 package API;
 
-import amt.models.Driver;
 
 import java.util.Arrays;
 
+import java.util.Random;
 import java.util.stream.Collectors;
 
 /**
  * Cette class permet de récupérer des fausses données pour pouvoir faire des tests.
  */
 public class MockApi extends DataProvider {
+    private static final Random random = new Random();
     private final MockData[] datas;
     public MockApi(MockData[] data){
         this.datas = data;
@@ -81,6 +82,34 @@ public class MockApi extends DataProvider {
                 """;
 
         return columnValue.formatted(title, text);
+    }
+
+    static MockData[] generateRandomData(){
+        MockApi.MockData[] datas = new MockApi.MockData[random.nextInt(0,21)];
+        for(int i = 0; i < datas.length; i++){
+            MockApi.ColumnValue[] columnValues = new MockApi.ColumnValue[random.nextInt(0,21)];
+            for(int j = 0; j < columnValues.length; j++){
+                columnValues[j] = new MockApi.ColumnValue(generateRandomString(), generateRandomString());
+            }
+            datas[i] = new MockApi.MockData(generateRandomString(), generateRandomString(), columnValues);
+        }
+        return datas;
+    }
+
+    /**
+     * source: https://www.baeldung.com/java-random-string
+     */
+    private static String generateRandomString(){
+        int leftLimit = 48; // numeral '0'
+        int rightLimit = 122; // letter 'z'
+        int targetStringLength = 10;
+
+
+        return  random.ints(leftLimit, rightLimit + 1)
+                .filter(i -> (i <= 57 || i >= 65) && (i <= 90 || i >= 97))
+                .limit(targetStringLength)
+                .collect(StringBuilder::new, StringBuilder::appendCodePoint, StringBuilder::append)
+                .toString();
     }
 
     @Override

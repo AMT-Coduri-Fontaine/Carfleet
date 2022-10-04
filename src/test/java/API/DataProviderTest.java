@@ -15,8 +15,7 @@ class DataProviderTest {
     final DataProvider api;
 
     DataProviderTest(){
-        MockApi.MockData[] datas = {};
-        api = new MockApi(datas);
+        api = new MockApi(MockApi.generateRandomData());
     }
 
     @BeforeEach
