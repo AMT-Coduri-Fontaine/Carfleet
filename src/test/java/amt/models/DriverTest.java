@@ -21,7 +21,7 @@ class DriverTest {
 
     @Test
     void createDriver(){
-        final Driver driver = new Driver("id", "name", new HashMap<String, String>());
+        final Driver driver = new Driver("id", "name");
 
         assertEquals("id", driver.getId());
         assertEquals("name", driver.getName());

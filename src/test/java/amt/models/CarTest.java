@@ -101,9 +101,10 @@ class CarTest {
     }
 
     @Test
-    void carDriver_SetNull_ThrowsException() {
+    void carDriver_SetNull_Success() {
         final Car car = new Car("id", "name");
+        car.setDriver(null);
 
-        assertThrows(IllegalArgumentException.class, () -> car.setDriver(null));
+        assertEquals(null, car.getDriver());
     }
 }

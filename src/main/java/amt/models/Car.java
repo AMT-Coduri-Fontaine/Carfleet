@@ -22,6 +22,7 @@ public class Car {
     private final String id;
     private final String name;
     private final List<Attribute> attributes = new LinkedList<>();
+    private Driver driver;
 
     public Car(String id, String name, List<Attribute> attributes){
         this.id = id;
@@ -33,5 +34,13 @@ public class Car {
     public Car(String id, String name) {
         this.id = id;
         this.name = name;
+    }
+
+    public void setDriver(Driver driver) {
+        this.driver = driver;
+    }
+
+    public Driver getDriver() {
+        return driver;
     }
 }
