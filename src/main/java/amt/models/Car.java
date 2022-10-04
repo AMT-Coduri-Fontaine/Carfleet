@@ -2,7 +2,7 @@ package amt.models;
 
 import java.util.Map;
 
-public class Driver {
+public class Car {
     public String getId() {
         return id;
     }
@@ -19,7 +19,7 @@ public class Driver {
     private final String name;
     private final Map<String, String> attributes;
 
-    public Driver(String id, String name, Map<String, String> attributes){
+    public Car(String id, String name, Map<String, String> attributes){
         this.id = id;
         this.name = name;
         this.attributes = attributes;
