@@ -30,4 +30,13 @@ public class Driver {
         this.id = id;
         this.name = name;
     }
+
+    @Override
+    public String toString() {
+        return "Driver{" +
+                "id='" + id + '\'' +
+                ", name='" + name + '\'' +
+                ", attributes=" + attributes +
+                '}';
+    }
 }

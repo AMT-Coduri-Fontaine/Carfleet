@@ -49,10 +49,26 @@ public abstract class DataProvider {
     }
     List<Car> getCars(){
         String json = fetchCars();
+        final List<Car> cars = new LinkedList<>();
         try{
             JsonNode jsonNode = objectMapper.readTree(json);
-            String color = jsonNode.get("color").asText();
-            return null;
+
+            for(final JsonNode carNode : jsonNode){
+                final String carId = carNode.get("id").asText();
+                final String plate = carNode.get("name").asText();
+                final JsonNode columnValues = carNode.get("column_values");
+                final List<Attribute> attributes = new LinkedList<>();
+
+                for(final JsonNode attributeNode: columnValues){
+                    final String title = attributeNode.get("title").asText();
+                    final String text = attributeNode.get("text").asText();
+                    attributes.add(new Attribute(title, text));
+                }
+
+                cars.add(new Car(carId, plate, attributes));
+            }
+
+            return cars;
         }catch(Exception e){
             e.printStackTrace();
             throw new RuntimeException("Error parsing json");
