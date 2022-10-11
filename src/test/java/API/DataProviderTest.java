@@ -46,6 +46,7 @@ class DataProviderTest {
         assertNotEquals(0, result.size());
 
         for (final Car car : result) {
+
             assertNotNull(car.getId());
             assertNotNull(car.getName());
             assertNotNull(car.getAttributes());

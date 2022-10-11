@@ -21,8 +21,7 @@ public class Driver {
     private final List<Attribute> attributes = new LinkedList<>();
 
     public Driver(String id, String name, List<Attribute> attributes) {
-        this.id = id;
-        this.name = name;
+        this(id, name);
         if (attributes != null)
             this.attributes.addAll(attributes);
     }
@@ -30,5 +29,14 @@ public class Driver {
     public Driver(String id, String name) {
         this.id = id;
         this.name = name;
+    }
+
+    @Override
+    public String toString() {
+        return "Driver{" +
+                "id='" + id + '\'' +
+                ", name='" + name + '\'' +
+                ", attributes=" + attributes +
+                '}';
     }
 }

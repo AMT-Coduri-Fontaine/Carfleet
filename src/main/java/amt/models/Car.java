@@ -43,4 +43,14 @@ public class Car {
     public Driver getDriver() {
         return driver;
     }
+
+    @Override
+    public String toString() {
+        return "Car{" +
+                "id='" + id + '\'' +
+                ", name='" + name + '\'' +
+                ", attributes=" + attributes +
+                ", driver=" + driver +
+                '}';
+    }
 }
