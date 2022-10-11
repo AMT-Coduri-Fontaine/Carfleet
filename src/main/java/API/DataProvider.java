@@ -1,5 +1,6 @@
 package API;
 
+import amt.models.Attribute;
 import amt.models.Car;
 import amt.models.Driver;
 import com.fasterxml.jackson.databind.JsonNode;
@@ -24,9 +25,17 @@ public abstract class DataProvider {
                 for(final JsonNode driverNode: subitems){
                     final String driverId = driverNode.get("id").asText();
                     final String driverName = driverNode.get("name").asText();
+                    final JsonNode columnValues = driverNode.get("column_values");
+                    final List<Attribute> attributes = new LinkedList<>();
+
+                    for(final JsonNode attributeNode: columnValues){
+                        final String title = attributeNode.get("title").asText();
+                        final String text = attributeNode.get("text").asText();
+                        attributes.add(new Attribute(title, text));
+                    }
 
                     // It should contain only one element
-                    drivers.add(new Driver(driverId, driverName));
+                    drivers.add(new Driver(driverId, driverName, attributes));
                     break;
                 }
             }
