@@ -3,32 +3,14 @@ package amt.models;
 import java.util.LinkedList;
 import java.util.List;
 
-public class Driver {
-    public String getId() {
-        return id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public List<Attribute> getAttributes() {
-        return new LinkedList<>(attributes);
-    }
-
-    private final String id;
-    private final String name;
-    private final List<Attribute> attributes = new LinkedList<>();
+public class Driver extends Entity{
 
     public Driver(String id, String name, List<Attribute> attributes) {
-        this(id, name);
-        if (attributes != null)
-            this.attributes.addAll(attributes);
+        super(id, name, attributes);
     }
 
     public Driver(String id, String name) {
-        this.id = id;
-        this.name = name;
+        super(id, name, null);
     }
 
     @Override
