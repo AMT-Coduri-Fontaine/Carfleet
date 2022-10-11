@@ -12,6 +12,12 @@ import java.util.List;
 public abstract class DataProvider {
     private ObjectMapper objectMapper = new ObjectMapper();
 
+    public class JsonFormatException extends RuntimeException {
+        public JsonFormatException() {
+            super("Wrong JSON format");
+        }
+    }
+
     List<Driver> getDrivers(){
         String json = fetchDrivers();
         final List<Driver> drivers = new LinkedList<>();
@@ -44,7 +50,7 @@ public abstract class DataProvider {
             return drivers;
         }catch(Exception e){
             e.printStackTrace();
-            throw new RuntimeException("Error parsing json");
+            throw new JsonFormatException();
         }
     }
     List<Car> getCars(){
@@ -71,7 +77,7 @@ public abstract class DataProvider {
             return cars;
         }catch(Exception e){
             e.printStackTrace();
-            throw new RuntimeException("Error parsing json");
+            throw new JsonFormatException();
         }
     }
 
