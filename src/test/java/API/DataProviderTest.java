@@ -5,6 +5,7 @@ import amt.models.Driver;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.function.Executable;
 
 import java.util.LinkedList;
 import java.util.List;
@@ -37,6 +38,63 @@ class DataProviderTest {
             assertNotNull(driver.getName());
             assertNotNull(driver.getAttributes());
         }
+    }
+
+    @Test
+    void exceptionOnWrongJsonFormat() {
+        final DataProvider api = new DataProvider() {
+            @Override
+            protected String fetchDrivers() {
+                return "wrong json format";
+            }
+
+            @Override
+            protected String fetchCars() {
+                return "wrong json format";
+            }
+        };
+
+
+        assertThrows(DataProvider.JsonFormatException.class, api::getDrivers);
+        assertThrows(DataProvider.JsonFormatException.class, api::getCars);
+    }
+
+    @Test
+    void exceptionOnEmptyJson() {
+        final DataProvider api = new DataProvider() {
+            @Override
+            protected String fetchDrivers() {
+                return "[{}]";
+            }
+
+            @Override
+            protected String fetchCars() {
+                return "[{}]";
+            }
+        };
+
+
+        assertThrows(DataProvider.JsonFormatException.class, api::getDrivers);
+        assertThrows(DataProvider.JsonFormatException.class, api::getCars);
+    }
+
+    @Test
+    void exceptionOnMissingAttributes() {
+        final DataProvider api = new DataProvider() {
+            @Override
+            protected String fetchDrivers() {
+                return "[{name: \"name\"}]";
+            }
+
+            @Override
+            protected String fetchCars() {
+                return "[{name: \"name\"}]";
+            }
+        };
+
+
+        assertThrows(DataProvider.JsonFormatException.class, api::getDrivers);
+        assertThrows(DataProvider.JsonFormatException.class, api::getCars);
     }
 
     @Test
