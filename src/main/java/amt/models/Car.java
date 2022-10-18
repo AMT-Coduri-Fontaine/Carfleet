@@ -25,6 +25,18 @@ public class Car extends Entity{
         return driver;
     }
 
+    static public List<Car> linkDriversAndCars(List<Car> cars, List<Driver> drivers){
+        for(Driver driver: drivers){
+            for(Car car: cars){
+                if(car.getId().equals(driver.getCarId())){
+                    car.setDriver(driver);
+                    break;
+                }
+            }
+        }
+        return cars;
+    }
+
     @Override
     public String toString() {
         return "Car{" +

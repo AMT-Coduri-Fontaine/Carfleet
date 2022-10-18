@@ -110,4 +110,18 @@ class DataProviderTest {
             assertNotNull(car.getAttributes());
         }
     }
+
+    @Test
+    void linkDriversAndCars() {
+        final List<Driver> drivers = api.getDrivers();
+        final List<Car> cars = api.getCars();
+
+        final List<Car> result = Car.linkDriversAndCars(cars, drivers);
+
+        assertNotEquals(0, result.size());
+
+        for (final Car car : result) {
+            assertNotNull(car.getDriver());
+        }
+    }
 }
