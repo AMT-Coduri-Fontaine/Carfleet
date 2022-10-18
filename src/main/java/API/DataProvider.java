@@ -25,7 +25,7 @@ public abstract class DataProvider {
             JsonNode jsonNode = objectMapper.readTree(json);
             for(final JsonNode carNode : jsonNode){
                 final String carId = carNode.get("id").asText();
-                final String plate = carNode.get("name").asText();
+                // final String plate = carNode.get("name").asText();
                 final JsonNode subitems = carNode.get("subitems");
 
                 for(final JsonNode driverNode: subitems){
@@ -41,7 +41,7 @@ public abstract class DataProvider {
                     }
 
                     // It should contain only one element
-                    drivers.add(new Driver(driverId, driverName, attributes));
+                    drivers.add(new Driver(driverId, driverName, attributes, carId));
                     break;
                 }
             }

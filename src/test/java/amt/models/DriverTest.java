@@ -34,7 +34,7 @@ class DriverTest {
     void driverCreation_WithAttributes_Success() {
         final ArrayList<Attribute> attributes = new ArrayList<>();
         attributes.add(new Attribute("attr1", "val1"));
-        final Driver driver = new Driver("id", "name", attributes);
+        final Driver driver = new Driver("id", "name", attributes, "");
 
         assertEquals("id", driver.getId());
         assertEquals("name", driver.getName());
@@ -45,7 +45,7 @@ class DriverTest {
     void attributesLocalModification_DoesntAffectDriverAttributes_Success() {
         final ArrayList<Attribute> attributes = new ArrayList<>();
         attributes.add(new Attribute("attr1", "val1"));
-        final Driver driver = new Driver("id", "name", attributes);
+        final Driver driver = new Driver("id", "name", attributes, "");
         attributes.remove(0);
 
         assertEquals(1, driver.getAttributes().size());
@@ -55,7 +55,7 @@ class DriverTest {
     void driverAttributes_GetAttributes_Success() {
         final ArrayList<Attribute> attributes = new ArrayList<>();
         attributes.add(new Attribute("attr1", "val1"));
-        final Driver driver = new Driver("id", "name", attributes);
+        final Driver driver = new Driver("id", "name", attributes, "");
 
         assertEquals(attributes, driver.getAttributes());
     }
@@ -65,7 +65,7 @@ class DriverTest {
         final ArrayList<Attribute> attributes = new ArrayList<>();
         Attribute attr1 = new Attribute("attr1", "val1");
         attributes.add(attr1);
-        final Driver driver = new Driver("id", "name", attributes);
+        final Driver driver = new Driver("id", "name", attributes, "");
         driver.getAttributes().remove(attr1);
 
         assertEquals(1, driver.getAttributes().size());
